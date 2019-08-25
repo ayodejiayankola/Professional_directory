@@ -63,13 +63,12 @@ class UserController extends Controller
      */
     public function show($id)
     {
-         //Get a list of all Artisan
+         
 
-         $users =  Users::paginate(5);
-
-         //Retuurn collection of artisan as a resource
- 
-         return UserResource::collection($users);
+            //Get a single Artisan
+        $user = User::findOrFail($id);
+        //Return single Artisan as a resource
+        return new UserResource($user);
     }
 
 
