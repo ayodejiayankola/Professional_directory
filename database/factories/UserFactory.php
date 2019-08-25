@@ -16,12 +16,20 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(\App\User::class, function (Faker $faker) {
+    $states = ['Lagos', 'Ibadan', 'Abuja'];
     return [
         'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
+        'business_name' => $faker->text(10),
+        'service' => $faker->text(20),
+        'business_address' => $states[array_rand($states)],
+        'phone' => $faker->unique()->phoneNumber(11),
+        'verification_code' => $faker->randomNumber($nbDigits = NULL, $strict = false),
+        'phone_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        'remember_token' => Str::random(10),
+        'remember_token' => Str::random(10)
+
+
+
     ];
 });
