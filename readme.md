@@ -1,72 +1,197 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+## Professional Directory
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+A prototype for allowing end users can search for artisans/professionals based on services and location search query. Allows vendor signup and registration via phone number
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-   Created an API to register a new artisan as a user.
+-   Created an API to allow registered artisan as a user login with credentials.
+-   Created an API to call for a list of all artisan registered .
+-   Created an API to call for a single artisan through registered user id .
+-   Created an API to perform a search query on artisan registered using the business address(location) and service as search parameter.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## API documentation
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Reister a new User as an artisan
 
-## Learning Laravel
+Returns json data for registered user.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   URL
+    /register
+    -Method:
+    POST
+    -URL Params
+    Required:
+    name=[string]
+    business_name=[string]
+    service=[string]
+    business_addres=[string]
+    phone=[string]
+    password=[string]
+    password_confirmation=[string]
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1400 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-Data Params
 
-## Laravel Sponsors
+requests.post('/register', 'AuthController@register');
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+-Success Response:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
+Code: 200
+Content: {
+"user": {
+"name": "desmond",
+"business_name": "agent tailoring",
+"service": "sewing",
+"business_address": "lagos",
+"phone": "078695040134",
+"updated_at": "2019-08-26 21:20:06",
+"created_at": "2019-08-26 21:20:06",
+"id": 13
+},
+"access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImEzMThmNjc3ZWRkMzJkODljY2FhODUyNTE2MDkyYTg3YzgxZDFjYmZiNjkzZTFkZDU0NmM2ZDY1ODQ1OGVlOTJlZTc2MGFiZDQ1NTM2YzBmIn0.eyJhdWQiOiIxIiwianRpIjoiYTMxOGY2NzdlZGQzMmQ4OWNjYWE4NTI1MTYwOTJhODdjODFkMWNiZmI2OTNlMWRkNTQ2YzZkNjU4NDU4ZWU5MmVlNzYwYWJkNDU1MzZjMGYiLCJpYXQiOjE1NjY4NTQ0MDgsIm5iZiI6MTU2Njg1NDQwOCwiZXhwIjoxNTk4NDc2ODA3LCJzdWIiOiIxMyIsInNjb3BlcyI6W119.2m7Ny7eRfSdBrgcyqoFBqYbKfGzGzMzSGC7fE8Ku5nEUq3j5o7gn1Hk4IPvrbnCTI2MwUcOQkPm-4_Ew2KQ8mIUmojFFoIjtqCxhWePW8ZNpSCm7yB7NYPTBSb_cgh0ZnuO\_\_ecPbEuKEqHhxHzm7V8mdsRZ1KRzpIP1PDvA-bazds65kfM8RRwTOScifI2Mx99_eKo0HKcPBPcDId77MGSef9fWyZWx0w5dBiIeqnkps-Hw4RVBVDi26h-AhdiRK3eNI5vBTzBpU6v8r4nApjCuwIgx5LvOWVogwHnMpmCDGog4WJQwE4GKbt3XVhQEAAJQCn2pe042XXYWGsTn68YnSMWVaS74nXRWcjs0u89kGxYccwEgWjdRa2JdfGJ7IrTYVVNdvzWPJMEMGSX1CXzclGgHSOyP4FiZVZmgbNO81NBesVGqyaTFMoRs-dZaF2KyTdPGGiAlRjWJHL753jJmWlsWLRxpG9DUa7tPA7qaSV-nj1aeUoQ7pB_Zx1rat60iaYGY3vy6UuxDh00opOVVSz5ysydw-EgqePbF8sJFnxCf-zScWhZm49J6FhKKQ2PTnWiSZsGMxhbN_l5xhFP1BxBdt3Klf8BDZRhE4IAPDzTrpwkNSSPfCA6rdOzliT9mgWMaTO-m841aDTgx4LpWWZWv-j0jroZyT19xfiw"
+}
 
-## Contributing
+-Sample Call:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+\$.ajax({
+url: "/register",
+dataType: "json",
+type : "POST",
+success : function(r) {
+console.log(r);
+}
+});
 
-## Security Vulnerabilities
+##Login as a register user/artisan
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Returns json data about a single user.
 
-## License
+-   URL
+    /login
+    -Method:
+    POST
+    -URL Params
+    Required:
+    phone=[string]
+    password=[string]
 
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+-Data Params
+requests.post('/login', 'AuthController@login');
+
+-Success Response:
+
+Code: 200
+Content:{
+"user": {
+"id": 13,
+"name": "desmond",
+"business_name": "agent tailoring",
+"service": "sewing",
+"business_address": "lagos",
+"phone": "078695040134",
+"verification_code": null,
+"phone_verified_at": null,
+"created_at": "2019-08-26 21:20:06",
+"updated_at": "2019-08-26 21:20:06"
+},
+"access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjQyNjRmYzlhNDg3ZTdhZTNmOWNmNzcwMjNhYzlmMTE0NzY3MWM2ZWU2YjE0ZmM2Y2FkOGY0YmExOGM2OGQwODQ5YjRlMzEzM2MzNzFlNWZkIn0.eyJhdWQiOiIxIiwianRpIjoiNDI2NGZjOWE0ODdlN2FlM2Y5Y2Y3NzAyM2FjOWYxMTQ3NjcxYzZlZTZiMTRmYzZjYWQ4ZjRiYTE4YzY4ZDA4NDliNGUzMTMzYzM3MWU1ZmQiLCJpYXQiOjE1NjY4NTUwNDQsIm5iZiI6MTU2Njg1NTA0NCwiZXhwIjoxNTk4NDc3NDQ0LCJzdWIiOiIxMyIsInNjb3BlcyI6W119.dhMXPVw3nm2fB-ex9ZQY0Gt8p0ce2gBjkP4g5SxN4d45rVm94Gp5ADbdSn3KQ4_VwME6biq3uQJTMRMJfv2uIWvcu4BcwjvHCEA9cP2ccK2l9YrP6oCpciuqfRvu9vM-VtQT2J8KA5Njm_7-2V4j3BuBBz0liBcn56Je6y3-TsVzf-J2L7pemoVjQXP_w-IVmjwRxXwkB480S_qocsbsKcGTilovQBQkcrnUm1_Mtbnf3jsRMrrfEf7UCq7zwwFOFFnppzBIH-UkpO1grAY1Mej1O4cAONpwGj-Yy3NNqv7awZWkG5EUAmR4lfmk4ATpVoYwUG8pgKQF500w_wnWujL88wUExbzt9J72cLDLIc5-j8xLgOB7S47QxMjGvj5tmoKZDH1CwFuM0uE4gugbI0iv8yd1K0Z1xyzdozE-5LVYW0qtmKxKKKiTmVbqREGdJM4IQiatsS5JHXier3ZxoYEdoTmbSEIYl6KmBerPwITKOTNFiCav8FHVfDDTlTtMbugp19eMhGQDR0PtrhNijQ-OoOipKr6IxjLRWL5sKWtr4JzlvpkbUGkRCssOWmZ_w1UgnCXF66eQR-vyGgxpnq1jbPPfGeI7rWwuL2zn1aeDcE6dgbmay4DdCsVxgSLyOcC_jked4NWnbJjdH0qkOGJQHy0rjWVjlJ9oKLe13LI"
+}
+
+-Sample Call:
+
+\$.ajax({
+url: "/login",
+dataType: "json",
+type : "POST",
+success : function(r) {
+console.log(r);
+}
+});
+
+##Search query for artisan based on location(business) and service
+
+Returns json data about all register users based on search made
+
+-   URL
+    /search?service=sewing&business_address=lagos
+    -Method:
+    GET
+    -URL Params
+    Required:
+    business_address=[string]
+    service=[string]
+
+-Data Params
+requests.get('/search', 'UserController@search');
+
+-Success Response:
+
+Code: 200
+Content:[
+{
+"id": 13,
+"name": "desmond",
+"business_name": "agent tailoring",
+"service": "sewing",
+"business_address": "lagos",
+"phone": "078695040134"
+}
+]
+
+-Sample Call:
+
+\$.ajax({
+url: "/search",
+dataType: "json",
+type : "GET",
+success : function(r) {
+console.log(r);
+}
+});
+
+##Show User
+Returns json data about a single user.
+
+-   URL
+    users/:id
+    -Method:
+    GET
+    -URL Params
+    Required:
+    id=[integer]
+
+-Data Params
+None
+
+-Success Response:
+
+Code: 200
+Content:[
+{
+"id": 13,
+"name": "desmond",
+"business_name": "agent tailoring",
+"service": "sewing",
+"business_address": "lagos",
+"phone": "078695040134"
+}
+]
+
+-   Error Response:
+
+Code: 404 NOT FOUND
+Content: { error : "User doesn't exist" }
+OR
+
+Code: 401 UNAUTHORIZED
+Content: { error : "You are unauthorized to make this request." }
+
+-Sample Call:
+\$.ajax({
+url: "/user/13",
+dataType: "json",
+type : "GET",
+success : function(r) {
+console.log(r);
+}
+});

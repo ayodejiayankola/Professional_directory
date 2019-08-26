@@ -33,10 +33,9 @@ class UserController extends Controller
         //search for artisan based on location and service
 
    
-        $service = $request->get('service');
+        $service= $request->get('service');
         $business_address = $request->get('business_address');
  
-
         $result= User::where([['service', 'like', "%$service%"],['business_address','like',"%$business_address%"]])->get();
 
        return UserResource::collection($result);

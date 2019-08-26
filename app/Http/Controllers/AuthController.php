@@ -10,6 +10,12 @@ use App\Http\Controllers\Controller;
 class AuthController extends Controller
 {
    
+    //return a random 4 digit, other algorithm to generate code can be done here and return the final verification code
+
+    private function generateVerificationCode(){
+        return rand(1000,9999); 
+    }
+
     public function register(Request $request){
         $validatedData = $request->validate([
             'name'=>'required | max:55',
