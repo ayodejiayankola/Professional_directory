@@ -12,7 +12,7 @@ A prototype for allowing end users can search for artisans/professionals based o
 
 ## API documentation
 
-## Reister a new User as an artisan
+## Register a new User as an artisan
 
 Returns json data for registered user.
 
@@ -62,7 +62,7 @@ console.log(r);
 }
 });
 
-##Login as a register user/artisan
+## Login as a register user/artisan
 
 Returns json data about a single user.
 
@@ -108,7 +108,7 @@ console.log(r);
 }
 });
 
-##Search query for artisan based on location(business) and service
+## Search query for artisan based on location(business) and service
 
 Returns json data about all register users based on search made
 
@@ -149,7 +149,8 @@ console.log(r);
 }
 });
 
-##Show User
+## Show User
+
 Returns json data about a single user.
 
 -   **URL **
