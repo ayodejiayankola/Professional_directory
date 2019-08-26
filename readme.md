@@ -62,7 +62,7 @@ console.log(r);
 }
 });
 
-## Login as a register user/artisan
+## Login as a registered user/artisan
 
 Returns json data about a single user.
 
@@ -108,7 +108,7 @@ console.log(r);
 }
 });
 
-## Search query for artisan based on location(business) and service
+## Search query for artisan based on location(business_address) and service
 
 Returns json data about all register users based on search made
 
@@ -149,7 +149,7 @@ console.log(r);
 }
 });
 
-## Show User
+## Show single User based on id
 
 Returns json data about a single user.
 
